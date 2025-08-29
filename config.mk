@@ -6,6 +6,7 @@ VERSION = 0.9.3
 # paths
 PREFIX = /usr/local
 MANPREFIX = $(PREFIX)/share/man
+DESKTOPPREFIX = /usr/share/applications
 
 X11INC = /usr/X11R6/include
 X11LIB = /usr/X11R6/lib

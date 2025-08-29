@@ -1,0 +1,43 @@
+diff '--color=auto' -u -N st-0.9.3/config.mk st-0.9.3-mod/config.mk
+--- st-0.9.3/config.mk	2025-08-09 15:00:58.350298234 +0200
++++ st-0.9.3-mod/config.mk	2025-08-29 17:08:33.799352646 +0200
+@@ -6,6 +6,7 @@
+ # paths
+ PREFIX = /usr/local
+ MANPREFIX = $(PREFIX)/share/man
++DESKTOPPREFIX = /usr/share/applications
+ 
+ X11INC = /usr/X11R6/include
+ X11LIB = /usr/X11R6/lib
+diff '--color=auto' -u -N st-0.9.3/Makefile st-0.9.3-mod/Makefile
+--- st-0.9.3/Makefile	2025-08-09 15:00:58.350298234 +0200
++++ st-0.9.3-mod/Makefile	2025-08-09 14:15:22.487873476 +0200
+@@ -42,10 +42,13 @@
+ 	sed "s/VERSION/$(VERSION)/g" < st.1 > $(DESTDIR)$(MANPREFIX)/man1/st.1
+ 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/st.1
+ 	tic -sx st.info
++	cp -f st.desktop $(DESKTOPPREFIX)/st.desktop
++	chmod 644 $(DESKTOPPREFIX)/st.desktop
+ 	@echo Please see the README file regarding the terminfo entry of st.
+ 
+ uninstall:
+ 	rm -f $(DESTDIR)$(PREFIX)/bin/st
+ 	rm -f $(DESTDIR)$(MANPREFIX)/man1/st.1
++	rm -f $(DESKTOPPREFIX)/st.desktop
+ 
+ .PHONY: all clean dist install uninstall
+diff '--color=auto' -u -N st-0.9.3/st.desktop st-0.9.3-mod/st.desktop
+--- st-0.9.3/st.desktop	1970-01-01 01:00:00.000000000 +0100
++++ st-0.9.3-mod/st.desktop	2025-08-09 14:10:12.648783953 +0200
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Name=Simple Terminal
++GenericName=Terminal
++Comment=Suckless terminal emulator for X
++Exec=st
++Terminal=false
++Type=Application
++Encoding=UTF-8
++Icon=utilities-terminal
++Categories=System;TerminalEmulator;
++Keywords=shell;prompt;command;commandline;cmd;
