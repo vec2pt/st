@@ -100,6 +100,11 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
+/*
+ * Scheme name: OneDark
+ * Scheme author: Lalit Magant (http://github.com/tilal6991)
+ * Template author: Tinted Theming (https://github.com/tinted-theming)
+ */
 static const char *colorname[] = {
 	/* 8 normal colors */
 	[0] = "#353b45",   /* black  */
